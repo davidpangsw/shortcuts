@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Script to convert markdown files to Anki decks using mdanki
-# Structure: anki/<author>/<folder>/<sub folder>/<deck>.mdanki.md -> anki/<author>/<folder>/<sub folder>/<deck>-<timestamp>.apkg
+# Structure:
+# - From: anki/<author>/<folder>/<sub folder>/<deck>.mdanki.md
+# - To: anki/<author>/<folder>/<sub folder>/<deck>-<timestamp>.apkg
 
 set -e
 

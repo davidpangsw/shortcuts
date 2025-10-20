@@ -1,0 +1,50 @@
+Index,Situation,Action,Result
+1,,⌥⌘D,Turn Dock hiding on/off
+2,,F14,Decrease display brightness
+3,,F15,Increase display brightness
+4,,⌃↑,Mission Control
+5,,⌃↓,Application windows
+6,,F11,Show Desktop
+7,,⌃←,Move left a space
+8,,⌃→,Move right a space
+9,,🌐Q,Quick Note
+10,,⌘M,Minimize
+11,,⌃🌐F,Fill
+12,,⌃🌐C,Center
+13,,⌃🌐R,Return to Previous Size
+14,,⌃🌐←,Tile Left Half
+15,,⌃🌐→,Tile Right Half
+16,,⌃🌐↑,Tile Top Half
+17,,⌃🌐↓,Tile Bottom Half
+18,,⌃⇧🌐←,Arrange Left and Right
+19,,⌃⇧🌐→,Arrange Right and Left
+20,,⌃⇧🌐↑,Arrange Top and Bottom
+21,,⌃⇧🌐↓,Arrange Bottom and Top
+22,,⌃F7,Change the way Tab moves focus
+23,,⌃F1,Turn keyboard access on or off
+24,,⌃F2,Move focus to the menu bar
+25,,⌃F3,Move focus to the Dock
+26,,⌃F4,Move focus to active or next window
+27,,⌃F5,Move focus to the window toolbar
+28,,⌃F6,Move focus to the floating window
+29,,⌘`,Move focus to next window
+30,,⌃F8,Move focus to status menus
+31,,⌃↩,Show contextual menu
+32,,⌃Space,Select the previous input source
+33,,⌃⌥Space,Select next source in Input menu
+34,,⇧⌘3,Save picture of screen as a file
+35,,⇧⌃⌘3,Copy picture of screen to the clipboard
+36,,⇧⌘4,Save picture of selected area as a file
+37,,⇧⌃⌘4,Copy picture of selected area to the clipboard
+38,,⇧⌘5,Screenshot and recording options
+39,,⌃⌥⇧⌘C,Convert Text to Simplified Chinese
+40,,⌃⇧⌘C,Convert Text to Traditional Chinese
+41,,⇧⌘Y,Make New Sticky Note
+42,,⇧⌘M,Open man Page in Terminal
+43,,⇧⌘A,Search man Page Index in Terminal
+44,,⇧⌘L,Search With Google
+45,,⌘Space,Show Spotlight search
+46,,⌥⌘Space,Show Finder search window
+47,,⌥⌘F5,Show Accessibility controls
+48,,⌘F5,Turn VoiceOver on or off
+49,,⇧⌘/,Show Help menu

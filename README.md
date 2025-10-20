@@ -43,12 +43,14 @@ This is a project for me to internalize useful shortcuts under different situati
     - `/<shortcut-group>.csv`
 
 - `/labs`
-  - `/<course-name>`
-    - `/<lab-index>.csv
+  - `/<app-name>`
+    - `/<shortcut-group>.md`
 
 - `/anki`
-  - `/<course-name>.mdanki.md`
-  - `/<course-name>.apkg`
+  - `/<author>`
+    - `/<app-name>`
+      - `/<shortcut-group>.mdanki.md`
+      - `/<shortcut-group>.apkg`
 
 ## Data Structure
 - Hierarchy: App -> Shortcut Group -> Shortcut
@@ -57,15 +59,15 @@ This is a project for me to internalize useful shortcuts under different situati
   - Situation (string, describing the source state, the prerequisite of the action. null if it is the "default" state that can be easily understood)
   - Action (string, describing keyboard combinations, gestures, or others)
   - Result (string, describing what the action do, or the result state after performing action, whichever is easier to be understood)
-  - Fullname = "<App Name>-<Shortcut Group>-Index"
+  - Fullname = "<app-name>-<shortcut-group>-index"
 
-- A Lab is a series of shortcuts that hopefully, but not guanranteed, cycles back to the original states without side effect. It has:
-  - Index (auto-inc, int)
-  - Course (string)
-  - Shortcuts (string[], a list of shortcut fullnames). Shouldn't be long, size from 1 to 10
-  - Description (string, about what this lab performed)
-  - Metadata about looking up for it (Tag or Group)
-  - Metadata about if it is prioritized, and if it is memorized well
+- A Course is a list of Labs.
+
+- A Lab is a series of steps that hopefully, but not guanranteed, cycles back to the original states without side effect. Each step usually is a shortcut to perform, but can also be a normal step not involving shortcut. For example:
+  - "Focus on a window", "Tile Left Half", "Tile Right Half", "Tile Top Half", "Tile bottom Half", "Return to Previous Size"
+    - This lab involves 6 steps, without producing side effects. Step 1 doesn't involve shortcut, but others do.
+    - Correct shortcut should also be included at the end of a step, for example, "Tile Left Half (⌃🌐←)"
+
 
 ## Presentation
 - Just like Anki or app using SM2 algo
