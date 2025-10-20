@@ -33,50 +33,57 @@ This is a project for me to internalize useful shortcuts under different situati
 
 # Design
 
-## Directories
-- `/raw`
-  - `/<data-source>`
-    - `/<data-group>.<csv|txt|md|pdf|txt|...>`
+## Workflow
 
-- `/shortcuts`
-  - `/<app-name>`
-    - `/<shortcut-group>.csv`
+This project uses a prompt-driven workflow with Claude Code to generate flashcards for learning shortcuts:
 
-- `/labs`
-  - `/<app-name>`
-    - `/<shortcut-group>.md`
+1. **Collect raw data** → 2. **Generate labs** → 3. **Generate Anki decks** → 4. **Import to Anki**
 
-- `/anki`
-  - `/<author>`
-    - `/<app-name>`
-      - `/<shortcut-group>.mdanki.md`
-      - `/<shortcut-group>.apkg`
+## Directory Structure
 
-## Data Structure
-- Hierarchy: App -> Shortcut Group -> Shortcut
-- Shortcut has:
-  - Index (auto-inc, int)
-  - Situation (string, describing the source state, the prerequisite of the action. null if it is the "default" state that can be easily understood)
-  - Action (string, describing keyboard combinations, gestures, or others)
-  - Result (string, describing what the action do, or the result state after performing action, whichever is easier to be understood)
-  - Fullname = "<app-name>-<shortcut-group>-index"
+- `/raw` - Raw data sources containing shortcut information
+  - `/<app-name>/<category>/...`
+    - Contains raw data files (md, txt, csv, pdf, etc.)
+    - Includes `prompt.md` files that instruct Claude Code how to process the data
 
-- A Course is a list of Labs.
+- `/labs` - Lab exercises for practicing shortcuts
+  - `/<app-name>/<course>.md`
+    - Human-readable markdown files
+    - Each lab contains a series of steps that cycle back to original state
+    - Steps include both actions and their keyboard shortcuts
 
-- A Lab is a series of steps that hopefully, but not guanranteed, cycles back to the original states without side effect. Each step usually is a shortcut to perform, but can also be a normal step not involving shortcut. For example:
-  - "Focus on a window", "Tile Left Half", "Tile Right Half", "Tile Top Half", "Tile bottom Half", "Return to Previous Size"
-    - This lab involves 6 steps, without producing side effects. Step 1 doesn't involve shortcut, but others do.
-    - Correct shortcut should also be included at the end of a step, for example, "Tile Left Half (⌃🌐←)"
+- `/anki` - Anki flashcard decks
+  - `/<author>/<app-name>/<course>.mdanki.md` - Source files for Anki decks
+  - `/<author>/<app-name>/<course>-<timestamp>.apkg` - Generated Anki packages
 
+- `/prompts` - Prompt templates for Claude Code
+  - `generate-lab.md` - Instructions for generating labs from raw data
+  - `generate-anki.md` - Instructions for generating Anki decks from labs
+
+## Key Concepts
+
+**Lab**: A series of steps designed to practice related shortcuts, ideally cycling back to the original state without side effects. For example:
+- "Focus on a window", "Tile Left Half (⌃🌐←)", "Tile Right Half (⌃🌐→)", ..., "Return to Previous Size (⌃🌐R)"
+- Each step describes an action with its keyboard shortcut
+
+**Anki Deck**: Generated from labs using the [mdanki](https://github.com/ashlinchak/mdanki) format:
+- Front side: Lab steps WITHOUT shortcuts (what you need to do)
+- Back side: Lab steps WITH shortcuts (how to do it)
+- Format: Front and back separated by `%` symbol
+- Deck hierarchy: `author::app-name::course`
+
+## Usage
+
+1. **Add raw data**: Place shortcut data in `/raw` with a `prompt.md` describing how to process it
+2. **Generate labs**: Use Claude Code with the prompt.md to create lab files in `/labs`
+3. **Generate Anki decks**: Use `/prompts/generate-anki.md` to convert labs to `.mdanki.md` files
+4. **Build Anki packages**: Run `./generate_decks.sh <path-to-mdanki-file>` to create `.apkg` files
+5. **Import to Anki**: Import the generated `.apkg` file into Anki app
 
 ## Presentation
-- Just like Anki or app using SM2 algo
-  - User enter tag(s), that maps to a bunch of labs
-  - labs are prioritize based on SM2 algo and importance (How?)
-  - A lab is displayed (each shortcut is without action), and user is asked to perform the shortcuts
-  - User look at the answer, review, and give score about how they feel
-    - Allow option to mark as "not important", which makes it displays less often.
 
-- Make it an Mobile App is a good approach, best it frees user's computer.
-  - Normal flashcard App would work? We just make our deck consisting of Labs
-  - 
+Anki handles the presentation using its built-in SM2 spaced repetition algorithm:
+- Each lab becomes one flashcard
+- Front shows what to do (without shortcuts)
+- Back reveals how to do it (with shortcuts)
+- Practice on mobile or desktop using Anki app
