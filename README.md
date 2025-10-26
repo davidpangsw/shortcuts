@@ -53,8 +53,8 @@ This project uses a prompt-driven workflow with Claude Code to generate flashcar
     - Steps include both actions and their keyboard shortcuts
 
 - `/anki` - Anki flashcard decks
-  - `/<author>/<app-name>/<course>.mdanki.md` - Source files for Anki decks
-  - `/<author>/<app-name>/<course>-<timestamp>.apkg` - Generated Anki packages
+  - `/<author>/shortcuts/<app-name>/<course>.mdanki.md` - Source files for Anki decks
+  - `/<author>/shortcuts/<app-name>/<course>-<timestamp>.apkg` - Generated Anki packages
 
 - `/prompts` - Prompt templates for Claude Code
   - `generate-lab.md` - Instructions for generating labs from raw data
