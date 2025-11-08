@@ -10,8 +10,8 @@
 | Mission Control              | O       | Show Desktop                                   | F11      |
 | Mission Control              | O       | Move left a space                              | ⌃←       |
 | Mission Control              | O       | Move right a space                             | ⌃→       |
-| Mission Control              | X       | Switch to Desktop 1                            | ⌃1       |
-| Mission Control              | X       | Switch to Desktop 2                            | ⌃2       |
+| Mission Control              | O       | Switch to Desktop 1                            | ⌃1       |
+| Mission Control              | O       | Switch to Desktop 2                            | ⌃2       |
 | Mission Control              | O       | Quick Note                                     | 🌐Q     |
 | Windows > General            | O       | Minimize                                       | ⌘M       |
 | Windows > General            | O       | Fill                                           | ⌃🌐F    |
